@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Three.js Creator</title>
+    <style>
+        body{
+            margin: 0px;
+            background-color: rgb(100,200,200);
+            overflow: hidden;
+        }
+        canvas{
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <script src="js/three/three.js"></script>
+    <script src="js/controls/OrbitControls.js"></script>
+
+    <div id="webGL-container" ></div>
+
+    <script>
+
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+        var renderer = new THREE.WebGLRenderer();
+
+        controls = new THREE.OrbitControls( camera, renderer.domElement);
+
+        // adding axis so we can look at the object axis
+        var axis = new THREE.AxesHelper(10);
+        scene.add(axis);
+
+        // create object, creating a cube object, with gray color
+        var cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
+        var cubeMaterials = [
+            new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load( 'img/wood.png' ), side: THREE.FrontSide }),     // Right
+            new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load( 'img/wood.png' ), side: THREE.DoubleSide }),     // Left
+            new THREE.MeshBasicMaterial({ color: 0xff00ff, side: THREE.BackSide }),                                           // Top
+            new THREE.MeshBasicMaterial({ color: 0x00ff00, side: THREE.DoubleSide }),                                           // Down
+            new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load( 'img/spiral.jpg' ), side: THREE.FrontSide }),   // Forward
+            new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load( 'img/spiral.jpg' ), side: THREE.BackSide })    // Backward
+        ];
+
+        // material defines the object look, like color, texture etc...
+
+        var cubeMaterial = new THREE.MeshFaceMaterial( cubeMaterials );
+
+        /*
+        var cubeMaterial = new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load( 'img/spiral.jpg' ), side: THREE.DoubleSide });
+
+        var cubeMaterial = new THREE.MeshBasicMaterial({
+            color: 0xffff00,
+            wireframe: false
+        });
+        */
+
+        var cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        scene.add(cubeMesh);
+
+        camera.position.z = 20;
+        // game logic
+        var update = function () {
+
+            cubeMesh.rotation.x = axis.rotation.x += 0.01;
+            cubeMesh.rotation.y = axis.rotation.y += 0.002;
+            cubeMesh.rotation.z = axis.rotation.z += 0.01;
+
+        };
+
+        // draw scene
+        var render = function () {
+            // specify scene and camera that the user will see through
+            renderer.render( scene, camera );
+        };
+
+        // run game loop ( update, render, repeat )
+        var gameLoop = function () {
+            requestAnimationFrame( gameLoop );
+
+            update();
+            render();
+        }
+
+        gameLoop();
+
+
+        renderer.setSize(width, height);
+        document.body.appendChild(renderer.domElement);
+
+        window.addEventListener( 'resize' , function () {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            renderer.setSize(width, height);
+
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        })
+
+    </script>
+
+
+</body>
+</html>
