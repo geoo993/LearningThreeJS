@@ -1,7 +1,5 @@
 $(function() {
 
-    var container = document.querySelector('#webGL-container');
-
     (function(){
         var script = document.createElement('script');
         script.onload=function(){
@@ -319,8 +317,7 @@ $(function() {
 
     renderer.setSize(width, height);
     effect.setSize(width, height);
-    //document.body.appendChild(renderer.domElement);
-    container.appendChild(renderer.domElement);
+    document.body.appendChild(renderer.domElement);
 
     window.addEventListener( 'resize' , function () {
         width = window.innerWidth;
