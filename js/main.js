@@ -76,3 +76,5 @@ $(function() {
     })
 
 });
+
+<script src="js/src/loaders/ObjectLoader.js"></script>

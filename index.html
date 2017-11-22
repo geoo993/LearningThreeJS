@@ -41,16 +41,16 @@
         })()
 
 
-
         var width = window.innerWidth;
         var height = window.innerHeight;
         var scene = new THREE.Scene();
-        var camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+        var camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 5000);
         var renderer = new THREE.WebGLRenderer();
         var effect = new THREE.AnaglyphEffect( renderer );
 
-        controls = new THREE.OrbitControls( camera, renderer.domElement);
+        camera.position.z = 20;
 
+        controls = new THREE.OrbitControls( camera, renderer.domElement);
 
         // Load Model
         var loader = new THREE.ObjectLoader();
@@ -65,12 +65,12 @@
             }
         );
 
+
         // adding axis so we can look at the object axis
         var axis = new THREE.AxesHelper(5.0);
         scene.add(axis);
 
         // Render Objects
-
         // material defines the object look, like color, texture etc...
         /*
         var cubeMaterials = [
@@ -89,7 +89,7 @@
         });
         */
 
-        /*
+
         var cubeMaterial = new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load( 'img/wood.png' ), side: THREE.DoubleSide });
 
         // create object, creating a cube object, with gray color
@@ -131,24 +131,45 @@
         var backWallCube = new THREE.Mesh( backWallGeometry, backWallMaterial );
         backWallCube.position.z = -4.5;
         scene.add( backWallCube );
-        */
+
 
         // Add Sky Box
-
-        var skyboxGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
-        var skyboxMaterials = [
-            new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load( 'img/Skybox/front.png' ), side: THREE.DoubleSide }),
-            new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load( 'img/Skybox/back.png' ), side: THREE.DoubleSide }),
-            new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load( 'img/Skybox/up.png' ), side: THREE.DoubleSide }),
-            new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load( 'img/Skybox/down.png' ), side: THREE.DoubleSide }),
-            new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load( 'img/Skybox/right.png' ), side: THREE.DoubleSide }),
-            new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load( 'img/Skybox/left.png' ), side: THREE.DoubleSide })
+        var skyboxes = [
+            'mountain',
+            'darksky',
+            'colorbasement',
+            'yokohamaday',
+            'commonroom',
+            'diningroom',
+            'petrolstation',
+            'porchfold'
         ];
-        var skyboxMaterial = new THREE.MeshFaceMaterial( skyboxMaterials );
-        var skyboxCube = new THREE.Mesh( skyboxGeometry, skyboxMaterial );
+        var skyboxInd = 0;
+
+        // Skybox texture website http://www.custommapmakers.org/skyboxes.php
+        var skyboxGeometry = new THREE.CubeGeometry( 1000, 1000, 1000 );
+
+        // Create a MeshFaceMaterial, which allows the cube to have different materials on each face
+        var skyboxCube = new THREE.Mesh( skyboxGeometry, new THREE.MeshBasicMaterial() );
         scene.add( skyboxCube );
 
-        /*
+        var updateSkyboxMaterial = function () {
+            var skyboxIndex = skyboxInd % skyboxes.length;
+
+            var skyboxMaterials =
+                [
+                    new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'img/Skybox/'+skyboxes[skyboxIndex]+'/_bk.jpg' ), side: THREE.DoubleSide } ), // Right side
+                    new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'img/Skybox/'+skyboxes[skyboxIndex]+'/_ft.jpg' ), side: THREE.DoubleSide } ), // Left side
+                    new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'img/Skybox/'+skyboxes[skyboxIndex]+'/_up.jpg' ), side: THREE.DoubleSide } ), // Top side
+                    new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'img/Skybox/'+skyboxes[skyboxIndex]+'/_dn.jpg' ), side: THREE.DoubleSide } ), // Bottom side
+                    new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'img/Skybox/'+skyboxes[skyboxIndex]+'/_rt.jpg' ), side: THREE.DoubleSide } ), // Front side
+                    new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'img/Skybox/'+skyboxes[skyboxIndex]+'/_lf.jpg' ), side: THREE.DoubleSide } ) // Back side
+                ];
+
+            skyboxCube.material = new THREE.MeshFaceMaterial( skyboxMaterials );
+        };
+        updateSkyboxMaterial();
+
         // Add Lights
         var ambientLight = new THREE.AmbientLight( 0xffffff, 0.5);
         //scene.add(ambientLight);
@@ -195,16 +216,12 @@
         var spotLightMaterial = new THREE.MeshBasicMaterial( { color: spotLightColor, side: THREE.DoubleSide } );
         var spotLightCube = new THREE.Mesh( spotLightGeometry, spotLightMaterial );
         scene.add( spotLightCube );
-        */
+
 
 
         // game logic
         var update = function () {
 
-
-            camera.position.z = 20;
-
-            /*
             cubeMesh.rotation.x = axis.rotation.x += 0.01;
             cubeMesh.rotation.y = axis.rotation.y += 0.002;
             cubeMesh.rotation.z = axis.rotation.z += 0.01;
@@ -226,7 +243,7 @@
             directionalLight.position.y = directionalLightCube.position.y = 20.0;
 
             spotLight.position.x = spotLightCube.position.x = 20.0;
-            */
+
 
         };
 
@@ -261,6 +278,23 @@
             camera.aspect = width / height;
             camera.updateProjectionMatrix();
         })
+
+        document.addEventListener("keydown", onDocumentKeyDown, false);
+        function onDocumentKeyDown(event) {
+            var keyCode = event.which;
+            console.log(keyCode);
+
+            if (keyCode == 39) { // right
+            } else if (keyCode == 37) { // left
+            } else if (keyCode == 38) { // up
+            } else if (keyCode == 40) { // down
+            }else if (keyCode == 32) { // space
+                skyboxInd += 1;
+                updateSkyboxMaterial();
+            }
+
+
+        };
 
 
 
