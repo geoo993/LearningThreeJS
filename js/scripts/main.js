@@ -332,8 +332,7 @@ $(function() {
         camera.updateProjectionMatrix();
     })
 
-    //document.addEventListener("keydown", onDocumentKeyDown, false);
-    container.addEventListener("keydown", onDocumentKeyDown, false);
+    document.addEventListener("keydown", onDocumentKeyDown, false);
     function onDocumentKeyDown(event) {
         var keyCode = event.which;
         console.log(keyCode);
