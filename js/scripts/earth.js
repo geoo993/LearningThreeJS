@@ -28,7 +28,7 @@ $(function() {
     controls = new THREE.OrbitControls( camera, renderer.domElement);
 
 
-    var ambientLight = new THREE.AmbientLight( 0x330000, 0.5);
+    var ambientLight = new THREE.AmbientLight( 0xffffff, 0.5);
     scene.add(ambientLight);
 
     var lightColor = new THREE.Color(0xffffff);
@@ -99,7 +99,6 @@ $(function() {
     }
 
     gameLoop();
-
 
     renderer.setSize(width, height);
     effect.setSize(width, height);
