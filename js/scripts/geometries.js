@@ -41,7 +41,7 @@ $(function() {
     // CUBE GEOMETRY (width, height, depth)
     //var geometry = new THREE.BoxGeometry( 20, 20, 20 );
 
-    // PLANE GEOMETRY (width, height)
+    // PLANE GEOMETRY (width, height, widthSegments, heightSegments)
     var geometry = new THREE.PlaneGeometry( 100, 100);
 
     // SPHERE GEOMETRY (radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength)
