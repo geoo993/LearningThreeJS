@@ -24,7 +24,6 @@ $(function() {
     var renderer = new THREE.WebGLRenderer();
 
 
-
     // LIGHTS
     var ambientLight = new THREE.AmbientLight( 0xffffff, 0.5);
     scene.add(ambientLight);
@@ -39,43 +38,14 @@ $(function() {
 
 
 
-
     // MATERIALS
-    var vertexShader = document.getElementById('vertexShader').textContent;
-    var fragmentShader = document.getElementById('fragmentShader').textContent;
-
-    // for uniform data type https://github.com/mrdoob/three.js/wiki/Uniforms-types
-    var uniforms = {
-        sampler0: { type: 't', value: THREE.ImageUtils.loadTexture( 'img/textures/wood.png' ) },
-        delta: { type: 'f', value: 0.5 }
-    };
-
-    var material = new THREE.ShaderMaterial({
-        //uniforms: uniforms,
-        vertexShader: vertexShader,
-        fragmentShader: fragmentShader
-    });
+    var material = new THREE.MeshBasicMaterial();
 
     // GEOMETRY
 
     // BOX BUFFER GEOMETRY (width, height, depth, widthSegments, heightSegments, depthSegments)
     var cubeGeometry = new THREE.BoxBufferGeometry( 50, 50, 50, 10, 10, 10 );
 
-    // PLANE GEOMETRY (width, height, widthSegments, heightSegments)
-    var planeGeometry = new THREE.PlaneGeometry( 10000, 10000, 100, 100);
-
-    // MESHES
-    var cubeMesh = new THREE.Mesh(cubeGeometry, material);
-    cubeMesh.position.set(0, 10, 100);
-    scene.add(cubeMesh);
-
-    var planeMesh = new THREE.Mesh(planeGeometry, new THREE.MeshLambertMaterial());
-    planeMesh.position.set(0, -100, 0);
-    planeMesh.rotation.set(-90 * Math.PI / 180, 0, 0);
-    scene.add(planeMesh);
-
-
-    /*
     var vertexDisplacement = new Float32Array(cubeGeometry.attributes.position.count);
     for (var i = 0; i < vertexDisplacement.length; i += 1){
         vertexDisplacement[i] = Math.sin(i);
@@ -83,7 +53,59 @@ $(function() {
 
     // WARNING: doing attributes only apply on buffer geometries
     cubeGeometry.addAttribute('vertexDisplacement', new THREE.BufferAttribute(vertexDisplacement, 1)); // 1 is the byte size per vertex, meaning float has a byte size of one
-    */
+
+
+    // PLANE GEOMETRY (width, height, widthSegments, heightSegments)
+    var planeGeometry = new THREE.PlaneGeometry( 10000, 10000, 100, 100);
+
+
+    // MESHES
+    var cubeMesh = new THREE.Mesh(cubeGeometry, material);
+    cubeMesh.position.set(0, 10, 100);
+    scene.add(cubeMesh);
+
+
+    var planeMesh = new THREE.Mesh(planeGeometry, new THREE.MeshLambertMaterial());
+    planeMesh.position.set(0, -100, 0);
+    planeMesh.rotation.set(-90 * Math.PI / 180, 0, 0);
+    scene.add(planeMesh);
+
+
+
+    var updateCubeMaterial = function(delta) {
+        // Shader loader
+        // https://github.com/codecruzer/webgl-shader-loader-js
+        // https://github.com/THeK3nger/threejs-async-shaders-example/blob/master/js/mytest.js
+        SHADER_LOADER.load(
+            function (data) {
+                var vertexShader = data.main.vertex;
+                var fragmentShader = data.main.fragment;
+
+                // for uniform data type https://github.com/mrdoob/three.js/wiki/Uniforms-types
+                var uniforms = {
+                    sampler0: {type: 't', value: THREE.ImageUtils.loadTexture('img/textures/wood.png')},
+                    delta: {type: 'f', value: 0.5}
+                };
+
+                material = new THREE.ShaderMaterial({
+                    uniforms: uniforms,
+                    vertexShader: vertexShader,
+                    fragmentShader: fragmentShader
+                });
+
+                cubeMesh.material = material;
+                cubeMesh.material.uniforms.delta.value = 0.5 * Math.sin(delta) * 0.5;
+
+                for (var i = 0; i < vertexDisplacement.length; i += 1){
+                    vertexDisplacement[i] = 0.5 * Math.sin(i * delta) * 0.25;
+                }
+                cubeMesh.geometry.attributes.vertexDisplacement.needsUpdate = true;
+
+            }
+        );
+    }
+
+
 
     // happens at the beginning
     var start = function(){
@@ -98,14 +120,8 @@ $(function() {
     var update = function () {
         delta += 0.01;
 
-        /*
-        cubeMesh.material.uniforms.delta.value = 0.5 * Math.sin(delta) * 0.5;
+        updateCubeMaterial(delta);
 
-        for (var i = 0; i < vertexDisplacement.length; i += 1){
-            vertexDisplacement[i] = 0.5 * Math.sin(i * delta) * 0.25;
-        }
-        cubeMesh.geometry.attributes.vertexDisplacement.needsUpdate = true;
-        */
     };
 
     // draw scene

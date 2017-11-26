@@ -26,6 +26,7 @@
     <script src="js/src/loaders/ObjectLoader.js"></script>
     <script src="js/loaders/OBJLoader.js"></script>
     <script src="js/effects/AnaglyphEffect.js"></script>
+    <script src="js/loaders/shaderloader/ShaderLoader.js"></script>
 
     <script>
         var fontJSON = {
@@ -1306,68 +1307,13 @@
         };
     </script>
 
-    <script type="x-shader/x-vertex" id="vertexShader" >
-        /*
-        // https://stackoverflow.com/questions/12627422/custom-texture-shader-in-three-js
+    <script data-src="js/shaders/mainVertShader.vert"
+            data-name="main"
+            type="x-shader/x-vertex"></script>
 
-        attribute float vertexDisplacement;
-
-        varying float vOpacity;
-        varying vec3 vPosition;
-        varying vec2 vUv; // varying transfers variable from vertex to fragment shader
-
-        void main() {
-            vOpacity = vertexDisplacement;
-            vPosition = position;
-            vUv = uv;
-
-            vec3 p = position;
-            p.x += sin(vertexDisplacement) * 50.0;
-            p.y += cos(vertexDisplacement) * 50.0;
-
-
-            vec4 modelViewPosition = modelViewMatrix * vec4(p, 1.0);
-            gl_Position = projectionMatrix * modelViewPosition;
-
-        }
-        */
-
-        void main() {
-            vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
-            gl_Position = projectionMatrix * modelViewPosition;
-        }
-
-    </script>
-
-    <script type="x-shader/x-fragment" id="fragmentShader" >
-        /*
-        // https://stackoverflow.com/questions/12627422/custom-texture-shader-in-three-js
-
-        uniform sampler2D sampler0;
-        uniform float delta;
-
-        varying float vOpacity;
-        varying vec3 vPosition;
-        varying vec2 vUv;
-
-        void main() {
-
-            vec4 tex = texture2D(sampler0, vUv);
-            float r = 1.0 + cos(vPosition.x * delta);
-            float g = 0.5 + sin(delta) * 0.5;
-            float b = 0.0;
-            float a = vOpacity;
-
-            //gl_FragColor = tex;                   // Displays Texture
-            gl_FragColor = vec4(r, g, b, a);        // Displays Color
-        }
-        */
-
-        void main() {
-            gl_FragColor = vec4(1.0, 0, 0, 1.0);
-        }
-
-    </script>
+    <script data-src="js/shaders/mainFragShader.frag"
+            data-name="main"
+            type="x-shader/x-fragment"></script>
 
     <script type="text/javascript" src="js/scripts/shaderMaterial.js"></script>
 
