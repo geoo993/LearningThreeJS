@@ -2,11 +2,89 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6be75abb-e881-49ef-b528-d345dd0d74c8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/shaders/MainShader.frag" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/shaders/MainShader.vert" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/scripts/lightsCameras.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/scripts/postProcessing.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/controls/DeviceOrientationControls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/controls/DragControls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/controls/EditorControls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/controls/FirstPersonControls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/controls/FlyControls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/controls/OrbitControls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/controls/OrthographicTrackballControls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/controls/PointerLockControls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/controls/TrackballControls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/controls/TransformControls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/controls/VRControls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/effects/AnaglyphEffect.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/effects/AsciiEffect.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/effects/OutlineEffect.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/effects/ParallaxBarrierEffect.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/effects/PeppersGhostEffect.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/effects/StereoEffect.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/effects/VREffect.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/3MFLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/AMFLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/AWDLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/AssimpJSONLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/AssimpLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/BVHLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/BabylonLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/BinaryLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/ColladaLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/DDSLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/FBXLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/GLTFLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/HDRCubeTextureLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/ImageBitmapLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/KMZLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/LoaderSupport.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/MD2Loader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/MMDLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/MTLLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/NRRDLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/OBJLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/OBJLoader2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/PCDLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/PDBLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/PLYLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/PRWMLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/PVRLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/PlayCanvasLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/RGBELoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/STLLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/SVGLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/TDSLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/TGALoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/TTFLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/UTF8Loader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/VRMLLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/VTKLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/XLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/ctm/CTMLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/ctm/CTMWorker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/ctm/ctm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/ctm/license/OpenCTM.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/ctm/license/js-lzma.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/ctm/license/js-openctm.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/ctm/lzma.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/deprecated/LegacyGLTFLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/draco/DRACOLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/draco/draco_decoder.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/draco/draco_decoder.wasm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/draco/draco_wasm_wrapper.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/sea3d/SEA3D.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/sea3d/SEA3DDeflate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/sea3d/SEA3DLZMA.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/sea3d/SEA3DLegacy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/sea3d/SEA3DLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/sea3d/o3dgc/SEA3DGC.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/sea3d/physics/SEA3DAmmo.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/sea3d/physics/SEA3DAmmoLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/sea3d/physics/SEA3DRigidBody.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/shaderloader/ShaderLoader.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/js/loaders/shaderloader/ShaderLoader.min.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/shaderMaterial.js" afterPath="$PROJECT_DIR$/js/scripts/shaderMaterial.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,44 +98,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="25" column="43" lean-forward="false" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+            <state relative-caret-position="460">
+              <caret line="1319" column="65" lean-forward="false" selection-start-line="1319" selection-start-column="65" selection-end-line="1319" selection-end-column="65" />
               <folding>
-                <element signature="n#script#6;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="e#874#88353#0" expanded="false" />
+                <element signature="n#script#8;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#1042#88521#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainVertShader.vert" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/shaders/mainVertShader.vert">
+      <file leaf-file-name="postProcessing.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/scripts/postProcessing.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mainFragShader.frag" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/shaders/mainFragShader.frag">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shaderMaterial.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/scripts/shaderMaterial.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="77" column="94" lean-forward="false" selection-start-line="77" selection-start-column="94" selection-end-line="77" selection-end-column="94" />
+            <state relative-caret-position="-583">
+              <caret line="21" column="45" lean-forward="false" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -90,10 +148,12 @@
         <option value="$PROJECT_DIR$/js/shaders/MainShader.frag" />
         <option value="$PROJECT_DIR$/js/shaders/mainVertShader.js" />
         <option value="$PROJECT_DIR$/js/shaders/mainFragShader.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/shaders/mainVertShader.vert" />
         <option value="$PROJECT_DIR$/js/shaders/mainFragShader.frag" />
         <option value="$PROJECT_DIR$/js/scripts/shaderMaterial.js" />
+        <option value="$PROJECT_DIR$/js/scripts/lightsCameras.js" />
+        <option value="$PROJECT_DIR$/js/scripts/postProcessing.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -201,12 +261,12 @@
       <workItem from="1511301504110" duration="5469000" />
       <workItem from="1511369207528" duration="14345000" />
       <workItem from="1511601280482" duration="18489000" />
-      <workItem from="1511655939627" duration="1339000" />
+      <workItem from="1511655939627" duration="8403000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51633000" />
+    <option name="totallyTimeSpent" value="58697000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="23" width="1249" height="737" extended-state="0" />
@@ -246,8 +306,8 @@
         <state relative-caret-position="375">
           <caret line="25" column="43" lean-forward="true" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
           <folding>
-            <element signature="n#script#6;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#874#88353#0" expanded="false" />
+            <element signature="n#script#8;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#1042#88521#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -281,8 +341,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#script#6;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#874#88353#0" expanded="false" />
+            <element signature="n#script#8;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#1042#88521#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -305,6 +365,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3000">
           <caret line="200" column="83" lean-forward="false" selection-start-line="200" selection-start-column="83" selection-end-line="200" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -313,8 +374,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#script#6;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#874#88353#0" expanded="false" />
+            <element signature="n#script#8;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#1042#88521#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -325,8 +386,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#script#6;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#874#88353#0" expanded="false" />
+            <element signature="n#script#8;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#1042#88521#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -344,6 +405,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="54" lean-forward="false" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -371,6 +433,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -412,6 +475,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
           <caret line="75" column="4" lean-forward="false" selection-start-line="75" selection-start-column="4" selection-end-line="76" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -419,13 +483,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="32" column="11" lean-forward="false" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/geometries.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-511">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -437,17 +494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-430">
           <caret line="31" column="18" lean-forward="false" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="25" column="43" lean-forward="false" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
-          <folding>
-            <element signature="n#script#6;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#874#88353#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -469,9 +515,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/scripts/shaderMaterial.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="77" column="94" lean-forward="false" selection-start-line="77" selection-start-column="94" selection-end-line="77" selection-end-column="94" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="158" selection-end-column="3" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/geometries.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="48" column="4" lean-forward="false" selection-start-line="48" selection-start-column="4" selection-end-line="49" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/lightsCameras.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/postProcessing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-583">
+          <caret line="21" column="45" lean-forward="false" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="1319" column="65" lean-forward="false" selection-start-line="1319" selection-start-column="65" selection-end-line="1319" selection-end-column="65" />
+          <folding>
+            <element signature="n#script#8;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#1042#88521#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

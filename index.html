@@ -22,11 +22,13 @@
 <body>
 
     <script src="js/three/three.js"></script>
-    <script src="js/controls/OrbitControls.js"></script>
+    <script src="js/helpers/controls/OrbitControls.js"></script>
     <script src="js/src/loaders/ObjectLoader.js"></script>
-    <script src="js/loaders/OBJLoader.js"></script>
-    <script src="js/effects/AnaglyphEffect.js"></script>
-    <script src="js/loaders/shaderloader/ShaderLoader.js"></script>
+    <script src="js/helpers/loaders/OBJLoader.js"></script>
+    <script src="js/helpers/effects/AnaglyphEffect.js"></script>
+    <script src="js/helpers/loaders/shaderloader/ShaderLoader.js"></script>
+    <script src="js/helpers/shaders/UnpackDepthRGBAShader.js"></script>
+    <script src="js/helpers/utils/ShadowMapViewer.js"></script>
 
     <script>
         var fontJSON = {
@@ -1315,7 +1317,7 @@
             data-name="main"
             type="x-shader/x-fragment"></script>
 
-    <script type="text/javascript" src="js/scripts/shaderMaterial.js"></script>
+    <script type="text/javascript" src="js/scripts/postProcessing.js"></script>
 
 </body>
 </html>
