@@ -29,6 +29,13 @@
     <script src="js/helpers/loaders/shaderloader/ShaderLoader.js"></script>
     <script src="js/helpers/shaders/UnpackDepthRGBAShader.js"></script>
     <script src="js/helpers/utils/ShadowMapViewer.js"></script>
+    <script src="js/helpers/shaders/CopyShader.js"></script>
+    <script src="js/helpers/postprocessing/EffectComposer.js"></script>
+    <script src="js/helpers/postprocessing/RenderPass.js"></script>
+    <script src="js/helpers/postprocessing/ShaderPass.js"></script>
+    <script src="js/helpers/shaders/SepiaShader.js"></script>
+    <script src="js/helpers/shaders/DigitalGlitch.js"></script>
+    <script src="js/helpers/postprocessing/GlitchPass.js"></script>
 
     <script>
         var fontJSON = {
@@ -1316,6 +1323,198 @@
     <script data-src="js/shaders/mainFragShader.frag"
             data-name="main"
             type="x-shader/x-fragment"></script>
+
+    <script type="x-shader/x-vertex" id="PPFXVertexShader" >
+         varying vec2 vUv;
+         void main() {
+             vUv = uv;
+             gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+         }
+    </script>
+
+    <script type="x-shader/x-fragment" id="blurFragmentShader">
+
+        varying vec2 vUv;
+
+        // RadialBlur - Shader
+        uniform sampler2D tDiffuse;
+        uniform float amount;
+        uniform float resolution;
+        uniform float radius;
+        uniform vec4 vColor;
+
+        void main()
+        {
+
+            float samples[10];
+            samples[0] = -0.08;
+            samples[1] = -0.05;
+            samples[2] = -0.03;
+            samples[3] = -0.02;
+            samples[4] = -0.01;
+            samples[5] =  0.01;
+            samples[6] =  0.02;
+            samples[7] =  0.03;
+            samples[8] =  0.05;
+            samples[9] =  0.08;
+
+
+            vec2 dir = 0.5 - vUv;
+            float dist = sqrt(dir.x * dir.x + dir.y * dir.y);
+            dir = dir/dist;
+
+            vec4 color = texture2D(tDiffuse, vUv);
+            vec4 sum = color;
+
+            for (int i = 0; i < 10; i++)
+                sum += texture2D( tDiffuse, vUv + dir * samples[i] * radius );
+
+            sum *= 1.0 / 11.0;
+            float t = dist * resolution;
+            t = clamp( t, 0.0, 1.0);
+
+            gl_FragColor = mix( color, sum, t );
+
+
+        }
+    </script>
+
+    <script type="x-shader/x-fragment" id="colorInversionFragmentShader">
+
+        varying vec2 vUv;
+
+        uniform sampler2D tDiffuse;
+
+        void main()
+        {
+            gl_FragColor = vec4(vec3(1.0 - texture2D(tDiffuse, vUv)), 1.0);
+
+        }
+    </script>
+
+    <script type="x-shader/x-fragment" id="BarrelDistortionFragmentShader">
+
+        varying vec2 vUv;
+
+        uniform sampler2D tDiffuse;
+        uniform float barrelPower;
+
+        const float PI = 3.1415926535;
+
+        vec2 Distort(vec2 p, float power)
+        {
+            float theta  = atan(p.y, p.x);
+            float radius = length(p);
+            radius = pow(radius, power);
+            p.x = radius * cos( theta );
+            p.y = radius * sin( theta );
+            return 0.5 * (p + 1.0);
+        }
+
+        void main()
+        {
+            vec2 xy = 2.0 * vUv.xy - 1.0;
+            vec2 uv;
+
+            float d = length(xy);
+
+            if (d < 1.0)
+            {
+                uv = Distort(xy, barrelPower);
+            }
+            else
+            {
+                uv = vUv.xy;
+            }
+
+            vec4 c = texture2D(tDiffuse, uv);
+            gl_FragColor = c;
+
+        }
+    </script>
+
+    <script type="x-shader/x-fragment" id="DreamVisionFragmentShader">
+
+        varying vec2 vUv;
+
+        uniform sampler2D tDiffuse;
+
+        void main()
+        {
+            vec2 uv = vUv.xy;
+            vec4 c = texture2D(tDiffuse, uv);
+
+            c += texture2D(tDiffuse, uv + 0.001);
+            c += texture2D(tDiffuse, uv + 0.003);
+            c += texture2D(tDiffuse, uv + 0.005);
+            c += texture2D(tDiffuse, uv + 0.007);
+            c += texture2D(tDiffuse, uv + 0.009);
+            c += texture2D(tDiffuse, uv + 0.011);
+
+            c += texture2D(tDiffuse, uv - 0.001);
+            c += texture2D(tDiffuse, uv - 0.003);
+            c += texture2D(tDiffuse, uv - 0.005);
+            c += texture2D(tDiffuse, uv - 0.007);
+            c += texture2D(tDiffuse, uv - 0.009);
+            c += texture2D(tDiffuse, uv - 0.011);
+
+            c.rgb = vec3((c.r + c.g + c.b) / 3.0);
+            c = c / 9.5;
+            gl_FragColor = c;
+
+        }
+    </script>
+
+    <script type="x-shader/x-fragment" id="EdgeDetectionFragmentShader">
+
+        varying vec2 vUv;
+
+        uniform sampler2D tDiffuse;
+
+        const float offset = 1.0 / 300.0;
+
+
+        void main()
+        {
+
+            vec2 offsets[9];
+            offsets[0] = vec2(-offset,  offset); // top-left
+            offsets[1] = vec2( 0.0,    offset);  // top-center
+            offsets[2] = vec2( offset,  offset); // top-right
+            offsets[3] = vec2(-offset,  0.0);    // center-left
+            offsets[4] = vec2( 0.0,    0.0);     // center-center
+            offsets[5] = vec2( offset,  0.0);    // center-right
+            offsets[6] = vec2(-offset, -offset); // bottom-left
+            offsets[7] = vec2( 0.0,   -offset);  // bottom-center
+            offsets[8] = vec2( offset, -offset); // bottom-right
+
+            float kernel[9];
+            kernel[0] = -1.0;
+            kernel[1] = -1.0;
+            kernel[2] = -1.0;
+            kernel[3] = -1.0;
+            kernel[4] = 8.0;
+            kernel[5] = -1.0;
+            kernel[6] = -1.0;
+            kernel[7] = -1.0;
+            kernel[8] = -1.0;
+
+
+            vec3 sampleTex[9];
+            for(int i = 0; i < 9; i++)
+            {
+                sampleTex[i] = vec3(texture2D(tDiffuse, vUv.st + offsets[i]));
+            }
+
+            vec3 color = vec3(0.0);
+            for(int i = 0; i < 9; i++) {
+                color += sampleTex[i] * kernel[i];
+            }
+
+            gl_FragColor = vec4(color, 1.0);
+
+        }
+    </script>
 
     <script type="text/javascript" src="js/scripts/postProcessing.js"></script>
 
